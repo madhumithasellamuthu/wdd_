@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Greeting Form</title>
+  <script>
+    function greetUser(event) {
+      event.preventDefault(); // prevent form from submitting
+      var name = document.getElementById("name").value.trim();
+      var output = document.getElementById("output");
+
+      if (name === "") {
+        output.innerHTML = "<span style='color:red;'>Error: Please enter your name.</span>";
+      } else {
+        output.innerHTML = "<h3>Hello, " + name + "!</h3>" +
+                           "<p>Welcome to Everyone!</p>" +
+                           "<p>Have a nice day!!</p>";
+      }
+    }
+  </script>
+</head>
+<body>
+
+<h2>Enter Your Name</h2>
+
+<form onsubmit="greetUser(event)">
+  <label for="name">Name:</label>
+  <input type="text" id="name" name="name">
+  <input type="submit" value="Submit">
+</form>
+
+<div id="output"></div>
+
+</body>
+</html>

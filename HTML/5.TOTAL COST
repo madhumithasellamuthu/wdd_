@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Purchase Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      padding: 20px;
+    }
+
+    input[type="number"] {
+      width: 80px;
+    }
+
+    table {
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+
+    td, th {
+      padding: 10px;
+    }
+
+    .result {
+      background-color: #f0f0f0;
+      padding: 15px;
+      width: 300px;
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Purchase Cost Calculator</h2>
+
+  <form method="post">
+    <table border="1">
+      <tr>
+        <th>Item</th>
+        <th>Price (₹)</th>
+        <th>Quantity</th>
+      </tr>
+      <?php
+      for ($i = 1; $i <= 3; $i++) {
+          echo "<tr>
+                  <td>Item $i</td>
+                  <td><input type='number' name='price$i' step='0.01' required></td>
+                  <td><input type='number' name='qty$i' required></td>
+                </tr>";
+      }
+      ?>
+    </table>
+    <input type="submit" name="calculate" value="Calculate Total">
+  </form>
+
+  <?php
+  if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["calculate"])) {
+      $subtotal = 0;
+
+      for ($i = 1; $i <= 3; $i++) {
+          $price = floatval($_POST["price$i"]);
+          $qty = intval($_POST["qty$i"]);
+          $subtotal += $price * $qty;
+      }
+
+      $tax = $subtotal * 0.10;
+      $total = $subtotal + $tax;
+
+      echo "<div class='result'>
+              <p><strong>Subtotal:</strong> ₹" . number_format($subtotal, 2) . "</p>
+              <p><strong>Tax (10%):</strong> ₹" . number_format($tax, 2) . "</p>
+              <p><strong>Total Cost:</strong> ₹" . number_format($total, 2) . "</p>
+            </div>";
+  }
+  ?>
+
+</body>
+</html>

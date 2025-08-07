@@ -1,0 +1,12 @@
+$this = "this"; 
+$that = "that"; 
+$the_other = 2.2000000000;
+
+print("$this,$not_set,$that+$the_other");
+
+
+
+
+
+OUTPUT:
+$this = "this"; $that = "that"; $the_other = 2.2000000000; print("$this,$not_set,$that+$the_other");

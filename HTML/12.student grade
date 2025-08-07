@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Grade Checker</title>
+</head>
+<body>
+  <h2>Check Student Grade</h2>
+  
+  <label>Enter Marks (%): </label>
+  <input type="number" id="marks" />
+  <button onclick="checkGrade()">Check Grade</button>
+
+  <h3 id="result"></h3>
+
+  <script>
+    function checkGrade() {
+      var marks = parseFloat(document.getElementById("marks").value);
+      var result = "";
+
+      if (marks >= 75) {
+        result = "First Class";
+      } else if (marks >= 60) {
+        result = "Second Class";
+      } else if (marks >= 40) {
+        result = "Third Class";
+      } else if (marks < 40) {
+        result = "Fail";
+      } else {
+        result = "Invalid input";
+      }
+
+      document.getElementById("result").innerHTML = "Grade: " + result;
+    }
+  </script>
+</body>
+</html>

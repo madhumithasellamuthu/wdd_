@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Soft Drink Deal</title>
+  <script>
+    function deal() {
+      var costA = 25, sizeA = 11;
+      var costB = 23, sizeB = 9;
+
+      var rateA = costA / sizeA; // cost per unit for A
+      var rateB = costB / sizeB; // cost per unit for B
+
+      var output = document.getElementById("result");
+
+      output.innerHTML = `<p>Drink A: Rs. ${costA} for ${sizeA} units → Rs. ${rateA.toFixed(2)} per unit</p>`;
+      output.innerHTML += `<p>Drink B: Rs. ${costB} for ${sizeB} units → Rs. ${rateB.toFixed(2)} per unit</p>`;
+
+      if (rateA < rateB) {
+        output.innerHTML += "<h3>👉 Drink A is a better deal (more value for money).</h3>";
+      } else if (rateB < rateA) {
+        output.innerHTML += "<h3>👉 Drink B is a better deal (more value for money).</h3>";
+      } else {
+        output.innerHTML += "<h3>👉 Both drinks offer the same value.</h3>";
+      }
+    }
+  </script>
+</head>
+<body>
+
+<h2>Which Soft Drink is a Better Deal?</h2>
+<button onclick="deal()">Check Best Deal</button>
+
+<div id="result" style="margin-top:20px;"></div>
+
+</body>
+</html>

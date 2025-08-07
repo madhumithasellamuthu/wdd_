@@ -1,0 +1,19 @@
+<?php
+// PHP program to extract a substring from a number using substr()
+
+// Original number
+$number = 12345;
+
+// Convert number to string and extract substring from index 2, length 2
+$sub = substr($number, 2, 2);
+
+// Display result
+echo "Original number: $number\n";
+echo "Extracted substring (from index 2, length 2): $sub\n";
+?>
+
+
+OUTPUT:
+
+Original number: 12345
+Extracted substring (from index 2, length 2): 34

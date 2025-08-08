@@ -1,0 +1,117 @@
+<?php
+// Detect if running in CLI or Web
+if (php_sapi_name() === 'cli') {
+    // ======================
+    // CLI VERSION
+    // ======================
+
+    echo "Enter your Name: ";
+    $name = trim(fgets(STDIN));
+
+    echo "Enter your Email: ";
+    $email = trim(fgets(STDIN));
+
+    echo "Enter your Message: ";
+    $message = trim(fgets(STDIN));
+
+    $errors = [];
+
+    if (empty($name)) {
+        $errors[] = "Name is required.";
+    }
+
+    if (empty($email)) {
+        $errors[] = "Email is required.";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors[] = "Invalid email format.";
+    }
+
+    if (empty($message)) {
+        $errors[] = "Message is required.";
+    }
+
+    if (!empty($errors)) {
+        echo "\nPlease fix the following errors:\n";
+        foreach ($errors as $error) {
+            echo "- $error\n";
+        }
+    } else {
+        echo "\nForm submitted successfully!\n";
+        echo "Name: $name\nEmail: $email\nMessage: $message\n";
+    }
+
+} else {
+    // ======================
+    // WEB VERSION
+    // ======================
+
+    $name = $email = $message = "";
+    $errors = [];
+
+    if ($_SERVER["REQUEST_METHOD"] == "POST") {
+        if (empty($_POST["name"])) {
+            $errors[] = "Name is required.";
+        } else {
+            $name = htmlspecialchars($_POST["name"]);
+        }
+
+        if (empty($_POST["email"])) {
+            $errors[] = "Email is required.";
+        } elseif (!filter_var($_POST["email"], FILTER_VALIDATE_EMAIL)) {
+            $errors[] = "Invalid email format.";
+        } else {
+            $email = htmlspecialchars($_POST["email"]);
+        }
+
+        if (empty($_POST["message"])) {
+            $errors[] = "Message is required.";
+        } else {
+            $message = htmlspecialchars($_POST["message"]);
+        }
+
+        if (empty($errors)) {
+            echo "<h3>Form submitted successfully!</h3>";
+            echo "Name: $name <br>Email: $email <br>Message: $message";
+            exit;
+        }
+    }
+    ?>
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>Contact Form with Validation</title>
+    </head>
+    <body>
+        <h2>Contact Us</h2>
+        <?php
+        if (!empty($errors)) {
+            echo "<ul style='color:red;'>";
+            foreach ($errors as $error) {
+                echo "<li>$error</li>";
+            }
+            echo "</ul>";
+        }
+        ?>
+        <form method="post" action="">
+            Name: <input type="text" name="name" value="<?php echo $name; ?>"><br><br>
+            Email: <input type="text" name="email" value="<?php echo $email; ?>"><br><br>
+            Message: <textarea name="message"><?php echo $message; ?></textarea><br><br>
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+    </html>
+<?php
+}
+?>
+
+OUTPUT:
+Enter your Name: MADHU
+Enter your Email: MADHU123@GMail.com
+Enter your Message: hii, this is madhumithasellamuthu, nice meeting you....
+
+Form submitted successfully!
+Name: MADHU
+Email: MADHU123@GMail.com
+Message: hii, this is madhumithasellamuthu, nice meeting you....
+
+

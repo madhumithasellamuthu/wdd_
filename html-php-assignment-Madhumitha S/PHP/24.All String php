@@ -1,0 +1,60 @@
+<?php
+// Original string
+$text = " Hello World! PHP String Functions Example ";
+
+// 1. Trim whitespace
+echo "Trim: '" . trim($text) . "'\n";
+
+// 2. String length
+echo "Length: " . strlen($text) . "\n";
+
+// 3. Word count
+echo "Word count: " . str_word_count($text) . "\n";
+
+// 4. Reverse string
+echo "Reverse: " . strrev($text) . "\n";
+
+// 5. Find position of "World"
+echo "Position of 'World': " . strpos($text, "World") . "\n";
+
+// 6. Replace text
+echo "Replace 'World' with 'Universe': " . str_replace("World", "Universe", $text) . "\n";
+
+// 7. Lowercase
+echo "Lowercase: " . strtolower($text) . "\n";
+
+// 8. Uppercase
+echo "Uppercase: " . strtoupper($text) . "\n";
+
+// 9. First letter uppercase
+echo "Ucfirst: " . ucfirst(trim($text)) . "\n";
+
+// 10. String repeat
+echo "Repeat: " . str_repeat("PHP ", 3) . "\n";
+
+// 11. Substring
+echo "Substring (0-5): " . substr($text, 0, 5) . "\n";
+
+// 12. String comparison
+echo "Compare 'Hello' and 'World': " . strcmp("Hello", "World") . "\n";
+?>
+
+
+OUTPUT:
+
+Trim: 'Hello World! PHP String Functions Example'
+Length: 43
+Word count: 6
+Reverse:  elpmaxE snoitcnuF gnirtS PHP !dlroW olleH 
+Position of 'World': 7
+Replace 'World' with 'Universe':  Hello Universe! PHP String Functions Example 
+Lowercase:  hello world! php string functions example 
+Uppercase:  HELLO WORLD! PHP STRING FUNCTIONS EXAMPLE 
+Ucfirst: Hello World! PHP String Functions Example
+Repeat: PHP PHP PHP 
+Substring (0-5):  Hell
+Compare 'Hello' and 'World': -1
+
+
+=== Code Execution Successful ===
+

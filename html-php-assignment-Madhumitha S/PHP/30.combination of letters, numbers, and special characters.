@@ -1,0 +1,22 @@
+<?php
+// Function to generate random password
+function generatePassword($length = 12) {
+    // Allowed characters: lowercase, uppercase, numbers, special characters
+    $characters = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+=-[]{}<>?,.';
+    $password = '';
+    $charLength = strlen($characters);
+
+    for ($i = 0; $i < $length; $i++) {
+        $password .= $characters[rand(0, $charLength - 1)];
+    }
+
+    return $password;
+}
+
+// Generate and display password
+echo "Random Password: " . generatePassword(12);
+?>
+
+OUTPUT:
+
+Random Password: W$I%K1FY2pz!

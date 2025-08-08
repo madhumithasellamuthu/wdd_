@@ -1,0 +1,20 @@
+<?php
+// Simulate request method in CLI
+$_SERVER['REQUEST_METHOD'] = 'POST';
+$_POST['name'] = 'John';
+$_GET['age'] = 25;
+
+if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    $name = $_POST['name'] ?? '';
+    echo "Hello, $name! (POST)\n";
+}
+
+if ($_SERVER["REQUEST_METHOD"] == "GET") {
+    $age = $_GET['age'] ?? '';
+    echo "You are $age years old. (GET)\n";
+}
+?>
+
+
+OUTPUT:
+Hello, John! (POST)

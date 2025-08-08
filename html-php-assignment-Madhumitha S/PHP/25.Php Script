@@ -1,0 +1,14 @@
+<?php
+// Original string
+$str = "The Thing will come to you soon";
+
+// Replace first occurrence of 'the' (case-insensitive) with 'best'
+$result = preg_replace('/the/i', 'best', $str, 1);
+
+// Display result
+echo $result;
+?>
+
+OUTPUT:
+
+best Thing will come to you soon

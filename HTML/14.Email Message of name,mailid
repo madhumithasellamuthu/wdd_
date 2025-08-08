@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Contact Form with Confirmation</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      margin: 24px;
+      background: #f7f8fa;
+      color: #111827;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(2,6,23,0.08);
+      padding: 20px;
+      max-width: 640px;
+      margin: 0 auto;
+    }
+    h1 { font-size: 20px; margin: 0 0 12px; }
+    label { display:block; margin-top:12px; font-weight:600; }
+    input[type="text"], input[type="email"], textarea {
+      width:100%;
+      padding:10px 12px;
+      margin-top:6px;
+      border-radius:8px;
+      border:1px solid #e6e9ef;
+      font-size:14px;
+      box-sizing:border-box;
+    }
+    textarea { min-height:110px; resize:vertical; }
+    .row { display:flex; gap:8px; align-items:center; margin-top:16px; }
+    button {
+      background:#2563eb;
+      color:white;
+      border:0;
+      padding:10px 16px;
+      border-radius:8px;
+      cursor:pointer;
+      font-weight:600;
+    }
+    .btn-secondary {
+      background:transparent;
+      border:1px solid #d1d5db;
+      color:#111827;
+    }
+    .confirmation {
+      margin-top:18px;
+      padding:12px;
+      border-radius:8px;
+      background:#f0fdf4; /* pale green */
+      border:1px solid #bbf7d0;
+    }
+    .hidden { display:none; }
+    .error { color: #b91c1c; font-size:13px; margin-top:8px; }
+  </style>
+</head>
+<body>
+  <main class="card" role="main">
+    <h1>Contact Us</h1>
+
+    <form id="contactForm" novalidate>
+      <label for="name">Name</label>
+      <input id="name" name="name" type="text" required autocomplete="name" placeholder="Your full name">
+
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required autocomplete="email" placeholder="you@example.com">
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" placeholder="Write your message here..." required></textarea>
+
+      <div class="row">
+        <button type="submit">Send message</button>
+        <button type="button" id="clearBtn" class="btn-secondary">Clear</button>
+      </div>
+
+      <p id="formError" class="error hidden" aria-live="polite"></p>
+    </form>
+
+    <!-- Confirmation area (initially hidden) -->
+    <section id="confirmation" class="confirmation hidden" aria-live="polite">
+      <strong>Thanks — your message was sent!</strong>
+      <p id="confText"></p>
+      <button id="sendAnother" class="btn-secondary" style="margin-top:8px;">Send another message</button>
+    </section>
+  </main>
+
+  <script>
+    // Minimal helper to show/hide elements
+    const show = (el) => el.classList.remove('hidden');
+    const hide = (el) => el.classList.add('hidden');
+
+    const form = document.getElementById('contactForm');
+    const confirmation = document.getElementById('confirmation');
+    const confText = document.getElementById('confText');
+    const formError = document.getElementById('formError');
+    const clearBtn = document.getElementById('clearBtn');
+    const sendAnother = document.getElementById('sendAnother');
+
+    // Basic client-side validation
+    function validateForm(data) {
+      if (!data.name.trim()) return 'Please enter your name.';
+      if (!data.email.trim()) return 'Please enter your email.';
+      // simple email pattern (not perfect, but good enough locally)
+      const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailPattern.test(data.email.trim())) return 'Please enter a valid email address.';
+      if (!data.message.trim()) return 'Please enter a message.';
+      return '';
+    }
+
+    // On submit: prevent page reload, validate, and display confirmation with name & email.
+    form.addEventListener('submit', function (e) {
+      e.preventDefault();
+
+      const formData = {
+        name: document.getElementById('name').value,
+        email: document.getElementById('email').value,
+        message: document.getElementById('message').value
+      };
+
+      const validationError = validateForm(formData);
+      if (validationError) {
+        formError.textContent = validationError;
+        show(formError);
+        return;
+      } else {
+        hide(formError);
+      }
+
+      // Show confirmation. Use textContent to avoid injecting HTML.
+      confText.textContent = `We've received your message. Name: ${formData.name.trim()} — Email: ${formData.email.trim()}. We'll get back to you soon.`;
+      show(confirmation);
+
+      // Optionally clear the form fields
+      form.reset();
+
+      // Focus the "Send another" button for quick keyboard use
+      sendAnother.focus();
+    });
+
+    // Clear button resets form & hides errors and confirmation (if visible)
+    clearBtn.addEventListener('click', function () {
+      form.reset();
+      hide(formError);
+      hide(confirmation);
+    });
+
+    // If user wants to send another message, hide confirmation and focus name
+    sendAnother.addEventListener('click', function () {
+      hide(confirmation);
+      document.getElementById('name').focus();
+    });
+  </script>
+</body>
+</html>

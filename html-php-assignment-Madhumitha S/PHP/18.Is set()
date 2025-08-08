@@ -1,0 +1,35 @@
+<?php
+// Example 1: Variable is set
+$name = "Alice";
+
+if (isset($name)) {
+    echo "\$name is set and not NULL.\n";
+} else {
+    echo "\$name is not set or is NULL.\n";
+}
+
+// Example 2: Variable is NULL
+$city = NULL;
+
+if (isset($city)) {
+    echo "\$city is set and not NULL.\n";
+} else {
+    echo "\$city is not set or is NULL.\n";
+}
+
+// Example 3: Using unset()
+unset($name);
+
+if (isset($name)) {
+    echo "\$name is still set.\n";
+} else {
+    echo "\$name has been unset or is NULL.\n";
+}
+?>
+
+
+OUTPUT:
+$name is set and not NULL.
+$city is not set or is NULL.
+$name has been unset or is NULL.
+

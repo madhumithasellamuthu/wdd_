@@ -1,0 +1,23 @@
+<?php
+// (i) rand() - Generates a random number between two given numbers
+$randomNumber = rand(1, 10);
+echo "Random Number between 1 and 10: $randomNumber <br>";
+
+// (ii) abs() - Returns the absolute value of a number
+$negativeValue = -15;
+echo "Absolute value of -15: " . abs($negativeValue) . "<br>";
+
+// (iii) str_replace() - Replaces all occurrences of a search string with a replacement string
+$text = "Hello World";
+$replacedText = str_replace("World", "PHP", $text);
+echo "Replaced Text: $replacedText <br>";
+
+// (iv) pi() - Returns the value of PI
+echo "Value of PI: " . pi() . "<br>";
+
+// (v) ceil() - Rounds a number up to the nearest integer
+$number = 4.3;
+echo "Ceil value of 4.3: " . ceil($number) . "<br>";
+?>
+OUTPUT:
+Random Number between 1 and 10: 5 <br>Absolute value of -15: 15<br>Replaced Text: Hello PHP <br>Value of PI: 3.1415926535898<br>Ceil value of 4.3: 5<br>

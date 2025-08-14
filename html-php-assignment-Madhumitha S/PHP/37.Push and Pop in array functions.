@@ -1,0 +1,36 @@
+<?php
+// Create an array
+$fruits = array("Apple", "Banana");
+
+// Push: Add elements to the end
+array_push($fruits, "Cherry", "Mango");
+echo "After Push: ";
+print_r($fruits);
+
+// Pop: Remove the last element
+$removed = array_pop($fruits);
+echo "Removed: $removed\n";
+
+// Final array after pop
+echo "After Pop: ";
+print_r($fruits);
+?>
+
+OUTPUT:
+After Push: Array
+(
+    [0] => Apple
+    [1] => Banana
+    [2] => Cherry
+    [3] => Mango
+)
+Removed: Mango
+After Pop: Array
+(
+    [0] => Apple
+    [1] => Banana
+    [2] => Cherry
+)
+
+
+=== Code Execution Successful ===

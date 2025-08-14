@@ -1,0 +1,52 @@
+<?php
+$fruits = ["banana", "apple", "cherry", "mango"];
+
+// Simple sort
+sort($fruits);
+print_r($fruits);
+
+// Reverse sort
+rsort($fruits);
+print_r($fruits);
+
+// Associative array sort by values
+$prices = ["apple" => 50, "banana" => 20, "mango" => 40];
+asort($prices);
+print_r($prices);
+
+// Sort by keys
+ksort($prices);
+print_r($prices);
+?>
+
+OUTPUT:
+
+Array
+(
+    [0] => apple
+    [1] => banana
+    [2] => cherry
+    [3] => mango
+)
+Array
+(
+    [0] => mango
+    [1] => cherry
+    [2] => banana
+    [3] => apple
+)
+Array
+(
+    [banana] => 20
+    [mango] => 40
+    [apple] => 50
+)
+Array
+(
+    [apple] => 50
+    [banana] => 20
+    [mango] => 40
+)
+
+
+=== Code Execution Successful ===

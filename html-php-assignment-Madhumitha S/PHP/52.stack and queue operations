@@ -1,0 +1,72 @@
+<?php
+// Stack Example (LIFO)
+echo "=== STACK (LIFO) Example ===\n";
+$stack = array();
+
+// Push elements onto stack
+array_push($stack, "A");
+array_push($stack, "B");
+array_push($stack, "C");
+
+echo "Stack after pushes: ";
+print_r($stack);
+
+// Pop element from stack (last element removed)
+$popped = array_pop($stack);
+echo "Popped from stack: $popped\n";
+
+echo "Stack after pop: ";
+print_r($stack);
+
+echo "\n";
+
+// Queue Example (FIFO)
+echo "=== QUEUE (FIFO) Example ===\n";
+$queue = array();
+
+// Enqueue elements into queue
+array_push($queue, "A");
+array_push($queue, "B");
+array_push($queue, "C");
+
+echo "Queue after enqueue: ";
+print_r($queue);
+
+// Dequeue element from queue (first element removed)
+$dequeued = array_shift($queue);
+echo "Dequeued from queue: $dequeued\n";
+
+echo "Queue after dequeue: ";
+print_r($queue);
+?>
+OUTPUT:
+
+=== STACK (LIFO) Example ===
+Stack after pushes: Array
+(
+    [0] => A
+    [1] => B
+    [2] => C
+)
+Popped from stack: C
+Stack after pop: Array
+(
+    [0] => A
+    [1] => B
+)
+
+=== QUEUE (FIFO) Example ===
+Queue after enqueue: Array
+(
+    [0] => A
+    [1] => B
+    [2] => C
+)
+Dequeued from queue: A
+Queue after dequeue: Array
+(
+    [0] => B
+    [1] => C
+)
+
+

@@ -1,0 +1,11 @@
+<?php
+// Example dataset (records)
+$records = array("Apple", "Banana", "Cherry", "Date", "Elderberry");
+
+// Access record number 3 (indexes start at 0)
+$recordNumber = 3; // 4th record
+echo "Record $recordNumber: " . $records[$recordNumber - 1]; // -1 because human count starts from 1
+?>
+
+OUTPUT:
+Record 3: Cherry

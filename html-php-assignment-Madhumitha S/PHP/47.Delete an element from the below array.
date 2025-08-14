@@ -1,0 +1,19 @@
+<?php
+// Original array
+$x = array(1, 2, 3, 4, 5);
+
+// Delete element at index 2 (value = 3)
+unset($x[2]);
+
+// Re-index array (optional)
+$x = array_values($x);
+
+// Print array elements
+foreach ($x as $value) {
+    echo $value . " ";
+}
+?>
+
+OUTPUT:
+
+1 2 4 5 

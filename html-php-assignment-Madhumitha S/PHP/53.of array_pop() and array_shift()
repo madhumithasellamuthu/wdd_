@@ -1,0 +1,59 @@
+<?php
+// Initial numeric array
+$numbers = [10, 20, 30, 40, 50];
+
+echo "Original Array:\n";
+print_r($numbers);
+
+// array_pop() removes the last element
+$lastElement = array_pop($numbers);
+echo "\nAfter array_pop():\n";
+echo "Removed Element: $lastElement\n";
+print_r($numbers);
+
+// array_shift() removes the first element
+$firstElement = array_shift($numbers);
+echo "\nAfter array_shift():\n";
+echo "Removed Element: $firstElement\n";
+print_r($numbers);
+
+/*
+Difference:
+- array_pop() removes from the END of the array.
+- array_shift() removes from the BEGINNING of the array.
+*/
+?>
+
+OUTPUT:
+
+Original Array:
+Array
+(
+    [0] => 10
+    [1] => 20
+    [2] => 30
+    [3] => 40
+    [4] => 50
+)
+
+After array_pop():
+Removed Element: 50
+Array
+(
+    [0] => 10
+    [1] => 20
+    [2] => 30
+    [3] => 40
+)
+
+After array_shift():
+Removed Element: 10
+Array
+(
+    [0] => 20
+    [1] => 30
+    [2] => 40
+)
+
+
+=== Code Execution Successful ===

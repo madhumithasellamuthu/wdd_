@@ -1,0 +1,59 @@
+<?php
+function multiArrayDiff($array1, $array2) {
+    $result = [];
+
+    foreach ($array1 as $key => $value) {
+        // If value is an array, compare recursively
+        if (is_array($value)) {
+            if (!isset($array2[$key]) || !is_array($array2[$key])) {
+                $result[$key] = $value;
+            } else {
+                $diff = multiArrayDiff($value, $array2[$key]);
+                if (!empty($diff)) {
+                    $result[$key] = $diff;
+                }
+            }
+        } else {
+            // If value not set or different in second array
+            if (!isset($array2[$key]) || $array2[$key] !== $value) {
+                $result[$key] = $value;
+            }
+        }
+    }
+
+    return $result;
+}
+
+// Example usage
+$array1 = [
+    "name" => "John",
+    "age" => 30,
+    "skills" => [
+        "PHP",
+        "JavaScript",
+        "Python"
+    ]
+];
+
+$array2 = [
+    "name" => "John",
+    "age" => 25,
+    "skills" => [
+        "PHP",
+        "Python"
+    ]
+];
+
+print_r(multiArrayDiff($array1, $array2));
+?>
+OUTPUT:
+Array
+(
+    [age] => 30
+    [skills] => Array
+        (
+            [1] => JavaScript
+            [2] => Python
+        )
+
+)

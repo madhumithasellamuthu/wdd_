@@ -1,0 +1,23 @@
+<?php
+// Array of strings to check
+$strings = array(
+    "I love PHP programming",
+    "JavaScript is fun",
+    "PHP is great for web development"
+);
+
+// The substring we want to search for
+$search = "PHP";
+
+// Loop through each string and check
+foreach ($strings as $text) {
+    if (strpos($text, $search) !== false) {  
+        // strpos() returns position if found, false if not
+        echo "The string '$text' contains '$search'.<br>";
+    } else {
+        echo "The string '$text' does NOT contain '$search'.<br>";
+    }
+}
+?>
+OUTPUT:
+The string 'I love PHP programming' contains 'PHP'.<br>The string 'JavaScript is fun' does NOT contain 'PHP'.<br>The string 'PHP is great for web development' contains 'PHP'.<br>

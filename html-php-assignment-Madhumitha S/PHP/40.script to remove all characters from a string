@@ -1,0 +1,30 @@
+<?php
+// Original string
+$text = "Hello@# World! 123_Ready?";
+
+// Convert string to array of characters
+$chars = str_split($text);
+
+// Allowed characters array (letters, numbers, space)
+$allowed = array_merge(
+    range('a', 'z'),
+    range('A', 'Z'),
+    range('0', '9'),
+    array(" ")
+);
+
+// Filter out unwanted characters
+$resultArray = array_filter($chars, function($char) use ($allowed) {
+    return in_array($char, $allowed);
+});
+
+// Join the array back into a string
+$cleaned = implode("", $resultArray);
+
+// Output result
+echo "Original: $text\n";
+echo "Cleaned:  $cleaned\n";
+?>
+output:
+Original: Hello@# World! 123_Ready?
+Cleaned:  Hello World 123Ready

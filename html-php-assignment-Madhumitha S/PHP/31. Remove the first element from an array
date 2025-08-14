@@ -1,0 +1,17 @@
+<?php
+$fruits = array("apple", "banana", "cherry", "date");
+
+array_shift($fruits); // Removes "apple"
+
+print_r($fruits);
+?>
+
+
+
+OUTPUT:
+Array
+(
+    [0] => banana
+    [1] => cherry
+    [2] => date
+)

@@ -1,0 +1,58 @@
+<?php
+// Sample text
+$text = "Contact us at test@example.com or admin123@mail.com. 
+Order 123 costs $45 and delivery takes 2 days. Hello    World   PHP";
+
+// 1. Validate emails
+preg_match_all("/[\w\.-]+@[\w\.-]+\.\w+/", $text, $emails);
+echo "Extracted Emails:\n";
+print_r($emails[0]);
+
+// 2. Extract all numbers
+preg_match_all("/\d+/", $text, $numbers);
+echo "\nExtracted Numbers:\n";
+print_r($numbers[0]);
+
+// 3. Replace multiple spaces with single space
+$cleanText = preg_replace("/\s+/", " ", $text);
+echo "\nText after removing extra spaces:\n";
+echo $cleanText . "\n";
+
+// 4. Split string by comma or space
+$fruitsText = "apple, banana orange,grape";
+$parts = preg_split("/[\s,]+/", $fruitsText);
+echo "\nSplit Text into Parts:\n";
+print_r($parts);
+?>
+OUTPUT:
+
+Extracted Emails:
+Array
+(
+    [0] => test@example.com
+    [1] => admin123@mail.com
+)
+
+Extracted Numbers:
+Array
+(
+    [0] => 123
+    [1] => 123
+    [2] => 45
+    [3] => 2
+)
+
+Text after removing extra spaces:
+Contact us at test@example.com or admin123@mail.com. Order 123 costs $45 and delivery takes 2 days. Hello World PHP
+
+Split Text into Parts:
+Array
+(
+    [0] => apple
+    [1] => banana
+    [2] => orange
+    [3] => grape
+)
+
+
+=== Code Execution Successful ===

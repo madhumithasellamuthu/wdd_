@@ -1,0 +1,72 @@
+<?php
+// Ticket booking queue simulation
+
+// Initial empty queue
+$ticketQueue = [];
+
+// Function to add a person to the queue
+function bookTicket(&$queue, $personName) {
+    array_push($queue, $personName); // Adds to the end of queue
+    echo "$personName has booked a ticket and joined the queue.\n";
+}
+
+// Function to serve a person from the queue
+function serveTicket(&$queue) {
+    if (!empty($queue)) {
+        $person = array_shift($queue); // Removes from the start of queue
+        echo "$person has been served and removed from the queue.\n";
+    } else {
+        echo "No one in the queue to serve.\n";
+    }
+}
+
+// Function to show current queue
+function showQueue($queue) {
+    if (empty($queue)) {
+        echo "The queue is empty.\n";
+    } else {
+        echo "Current Queue: " . implode(", ", $queue) . "\n";
+    }
+}
+
+// Booking tickets
+bookTicket($ticketQueue, "Alice");
+bookTicket($ticketQueue, "Bob");
+bookTicket($ticketQueue, "Charlie");
+
+showQueue($ticketQueue);
+
+// Serving customers
+serveTicket($ticketQueue);
+showQueue($ticketQueue);
+
+serveTicket($ticketQueue);
+showQueue($ticketQueue);
+
+// Another booking
+bookTicket($ticketQueue, "David");
+showQueue($ticketQueue);
+
+serveTicket($ticketQueue);
+serveTicket($ticketQueue);
+serveTicket($ticketQueue); // Trying to serve when queue is empty
+?>
+
+
+
+OUTPUT:
+
+Alice has booked a ticket and joined the queue.
+Bob has booked a ticket and joined the queue.
+Charlie has booked a ticket and joined the queue.
+Current Queue: Alice, Bob, Charlie
+Alice has been served and removed from the queue.
+Current Queue: Bob, Charlie
+Bob has been served and removed from the queue.
+Current Queue: Charlie
+David has booked a ticket and joined the queue.
+Current Queue: Charlie, David
+Charlie has been served and removed from the queue.
+David has been served and removed from the queue.
+No one in the queue to serve.
+

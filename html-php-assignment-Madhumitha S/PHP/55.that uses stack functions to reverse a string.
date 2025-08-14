@@ -1,0 +1,30 @@
+<?php
+// Original string
+$string = "Hello World";
+
+// Convert string into array of characters
+$charArray = str_split($string);
+
+// Initialize an empty stack
+$stack = [];
+
+// Push each character onto the stack
+foreach ($charArray as $char) {
+    array_push($stack, $char);
+}
+
+// Pop characters from the stack to reverse the string
+$reversedString = "";
+while (!empty($stack)) {
+    $reversedString .= array_pop($stack);
+}
+
+// Output
+echo "Original String: " . $string . "<br>";
+echo "Reversed String: " . $reversedString;
+?>
+
+OUTPUT:
+
+Original String: Hello World<br>Reversed String: dlroW olleH
+

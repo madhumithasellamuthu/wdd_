@@ -1,0 +1,21 @@
+<?php
+// Step 1: Create the array
+$fruits = array("Apple", "Banana", "Cherry", "Mango");
+
+// Step 2: Initialize counter
+$i = 0;
+
+// Step 3: Get array length
+$length = count($fruits);
+
+// Step 4: Loop through array
+while ($i < $length) {
+    echo "Fruit at index $i: " . $fruits[$i] . "<br>";
+    
+    // Step 6: Increment counter
+    $i++;
+}
+?>
+OUTPUT:
+Fruit at index 0: Apple<br>Fruit at index 1: Banana<br>Fruit at index 2: Cherry<br>Fruit at index 3: Mango<br>
+

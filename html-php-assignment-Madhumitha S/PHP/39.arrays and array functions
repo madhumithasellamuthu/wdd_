@@ -1,0 +1,47 @@
+<?php
+// Step 1: Input student data (could be from form, here hardcoded)
+$students = array(
+    array("name" => "Alice", "score" => 92),
+    array("name" => "Bob", "score" => 76),
+    array("name" => "Charlie", "score" => 64),
+    array("name" => "David", "score" => 58)
+);
+
+// Step 2: Function to calculate grade based on score
+function calculateGrade($score) {
+    if ($score >= 90) return "A";
+    elseif ($score >= 80) return "B";
+    elseif ($score >= 70) return "C";
+    elseif ($score >= 60) return "D";
+    else return "F";
+}
+
+// Step 3: Add grades to each student using array_map
+$students = array_map(function($student) {
+    $student["grade"] = calculateGrade($student["score"]);
+    return $student;
+}, $students);
+
+// Step 4: Generate summary report
+$totalScore = array_sum(array_column($students, "score"));
+$averageScore = $totalScore / count($students);
+
+// Step 5: Count students per grade using array_count_values
+$gradeCounts = array_count_values(array_column($students, "grade"));
+
+// Step 6: Display report
+echo "<h2>Student Grades Report</h2>";
+foreach ($students as $student) {
+    echo "{$student['name']} - Score: {$student['score']} - Grade: {$student['grade']}<br>";
+}
+
+echo "<br><strong>Class Average:</strong> " . round($averageScore, 2) . "<br>";
+echo "<strong>Grade Distribution:</strong><br>";
+foreach ($gradeCounts as $grade => $count) {
+    echo "Grade $grade: $count student(s)<br>";
+}
+?>
+
+
+OUTPUT:
+<h2>Student Grades Report</h2>Alice - Score: 92 - Grade: A<br>Bob - Score: 76 - Grade: C<br>Charlie - Score: 64 - Grade: D<br>David - Score: 58 - Grade: F<br><br><strong>Class Average:</strong> 72.5<br><strong>Grade Distribution:</strong><br>Grade A: 1 student(s)<br>Grade C: 1 student(s)<br>Grade D: 1 student(s)<br>Grade F: 1 student(s)<br>

@@ -1,0 +1,23 @@
+<?php
+// Sample string containing emails
+$text = "For support contact support@example.com, for sales reach sales123@shop.com or admin@mail.org";
+
+// Regular expression pattern to match email addresses
+$pattern = "/[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}/";
+
+// Extract all email addresses
+preg_match_all($pattern, $text, $matches);
+
+// Display extracted emails
+echo "Extracted Email Addresses:\n";
+print_r($matches[0]);
+?>
+OUTPUT:
+Extracted Email Addresses:
+Array
+(
+    [0] => support@example.com
+    [1] => sales123@shop.com
+    [2] => admin@mail.org
+)
+

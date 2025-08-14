@@ -1,0 +1,46 @@
+<?php
+// Initial array
+$fruits = array("Apple", "Banana", "Cherry", "Mango");
+
+echo "Original Array:\n";
+print_r($fruits);
+
+// array_shift() → Removes first element
+$removed = array_shift($fruits);
+echo "\nAfter array_shift() (Removed: $removed):\n";
+print_r($fruits);
+
+// array_unshift() → Adds element(s) to the beginning
+array_unshift($fruits, "Strawberry", "Pineapple");
+echo "\nAfter array_unshift():\n";
+print_r($fruits);
+?>
+
+OUTPUT:
+
+Original Array:
+Array
+(
+    [0] => Apple
+    [1] => Banana
+    [2] => Cherry
+    [3] => Mango
+)
+
+After array_shift() (Removed: Apple):
+Array
+(
+    [0] => Banana
+    [1] => Cherry
+    [2] => Mango
+)
+
+After array_unshift():
+Array
+(
+    [0] => Strawberry
+    [1] => Pineapple
+    [2] => Banana
+    [3] => Cherry
+    [4] => Mango
+)

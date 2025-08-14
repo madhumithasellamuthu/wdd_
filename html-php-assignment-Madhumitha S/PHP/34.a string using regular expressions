@@ -1,0 +1,13 @@
+<?php
+// Original string
+$text = "The sky is blue. Blue is my favorite color. I like blue skies.";
+
+// Replace all occurrences of the word 'blue' (case-insensitive) with 'green'
+$result = preg_replace("/\bblue\b/i", "green", $text);
+
+echo $result;
+?>
+
+
+OUTPUT:
+The value in the second row, third column is: 6

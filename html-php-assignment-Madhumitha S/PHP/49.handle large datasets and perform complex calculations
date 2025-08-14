@@ -1,0 +1,41 @@
+<?php
+// Step 1: Sample dataset (could come from DB in real-world)
+$players = [
+    ["name" => "Alice", "goals" => 10, "assists" => 8, "fouls" => 2],
+    ["name" => "Bob", "goals" => 7,  "assists" => 12, "fouls" => 5],
+    ["name" => "Charlie", "goals" => 15, "assists" => 5, "fouls" => 1],
+    ["name" => "David", "goals" => 5, "assists" => 6, "fouls" => 0]
+];
+
+// Step 2: Calculate Performance Index
+foreach ($players as $key => $player) {
+    $performanceIndex = ($player['goals'] * 5) + ($player['assists'] * 3) - ($player['fouls'] * 2);
+    $players[$key]['performanceIndex'] = $performanceIndex;
+}
+
+// Step 3: Calculate Average Performance Index
+$totalIndex = array_sum(array_column($players, 'performanceIndex'));
+$averageIndex = $totalIndex / count($players);
+
+// Step 4: Sort players by Performance Index (descending)
+usort($players, function ($a, $b) {
+    return $b['performanceIndex'] <=> $a['performanceIndex'];
+});
+
+// Step 5: Display results
+echo "Average Performance Index: " . round($averageIndex, 2) . "\n\n";
+echo "Player Rankings:\n";
+foreach ($players as $rank => $player) {
+    echo ($rank+1) . ". " . $player['name'] . " - Index: " . $player['performanceIndex'] . "\n";
+}
+?>
+
+OUTPUT:
+
+Average Performance Index: 65.5
+
+Player Rankings:
+1. Charlie - Index: 88
+2. Alice - Index: 70
+3. Bob - Index: 61
+4. David - Index: 43

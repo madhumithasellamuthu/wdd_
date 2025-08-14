@@ -1,0 +1,57 @@
+<?php
+// Playlist management using arrays and array functions
+
+// Step 1: Create some songs
+$songs = [
+    ["title" => "Shape of You", "artist" => "Ed Sheeran"],
+    ["title" => "Blinding Lights", "artist" => "The Weeknd"],
+    ["title" => "Someone Like You", "artist" => "Adele"],
+    ["title" => "Believer", "artist" => "Imagine Dragons"]
+];
+
+// Step 2: Create an empty playlist
+$playlist = [];
+
+// Step 3: Add songs to the playlist
+array_push($playlist, $songs[0], $songs[2]); // Add Shape of You and Someone Like You
+
+// Step 4: Display the playlist
+echo "🎵 Playlist:\n";
+foreach ($playlist as $song) {
+    echo "- {$song['title']} by {$song['artist']}\n";
+}
+
+// Step 5: Add another song
+$playlist[] = $songs[1]; // Add Blinding Lights
+
+// Step 6: Remove a song (remove "Shape of You")
+foreach ($playlist as $index => $song) {
+    if ($song['title'] === "Shape of You") {
+        unset($playlist[$index]);
+    }
+}
+$playlist = array_values($playlist); // Reindex array
+
+// Step 7: Sort playlist alphabetically by title
+usort($playlist, function($a, $b) {
+    return strcmp($a['title'], $b['title']);
+});
+
+// Step 8: Display final playlist
+echo "\n🎵 Final Playlist (Sorted):\n";
+foreach ($playlist as $song) {
+    echo "- {$song['title']} by {$song['artist']}\n";
+}
+?>
+OUTPUT:
+
+🎵 Playlist:
+- Shape of You by Ed Sheeran
+- Someone Like You by Adele
+
+🎵 Final Playlist (Sorted):
+- Blinding Lights by The Weeknd
+- Someone Like You by Adele
+
+
+=== Code Execution Successful ===

@@ -1,0 +1,49 @@
+<?php
+// Original array
+$players = array("Virat", "Rohit", "Dhoni", "Bumrah");
+
+// Convert all elements to lowercase
+$lowercaseArray = array_map('strtolower', $players);
+
+// Convert all elements to uppercase
+$uppercaseArray = array_map('strtoupper', $players);
+
+// Print results
+echo "Original Array:\n";
+print_r($players);
+
+echo "\nLowercase Array:\n";
+print_r($lowercaseArray);
+
+echo "\nUppercase Array:\n";
+print_r($uppercaseArray);
+?>
+
+OUTPUT:
+
+Original Array:
+Array
+(
+    [0] => Virat
+    [1] => Rohit
+    [2] => Dhoni
+    [3] => Bumrah
+)
+
+Lowercase Array:
+Array
+(
+    [0] => virat
+    [1] => rohit
+    [2] => dhoni
+    [3] => bumrah
+)
+
+Uppercase Array:
+Array
+(
+    [0] => VIRAT
+    [1] => ROHIT
+    [2] => DHONI
+    [3] => BUMRAH
+)
